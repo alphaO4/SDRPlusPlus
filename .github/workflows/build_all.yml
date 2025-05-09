@@ -158,8 +158,12 @@ jobs:
         runs-on: macos-14
 
         steps:
-        - uses: actions/checkout@v4
-        
+        - uses: actions/checkout@v4 
+        # Use Ninja to maybe fix compile issue. ref: https://github.com/pytorch/vision/issues/8421#issuecomment-2620141122
+
+        - name: Install ninja
+          run: brew install ninja 
+
         - name: Create Build Environment
           run: cmake -E make_directory ${{runner.workspace}}/build
 
