@@ -35,12 +35,23 @@ if (NOT SDRPP_MODULE_CMAKE)
 endif ()
 
 
+if (NOT SDRPP_MODULE_CMAKE)
+    set(SDRPP_MODULE_CMAKE "/Users/runner/work/SDRPlusPlus/sdrpp_module.cmake")
+endif ()
+
+# Remove the -std=c++17 flag
+string(REPLACE "-std=c++17" "" SDRPP_COMPILER_FLAGS "${SDRPP_COMPILER_FLAGS}")
+string(REGEX REPLACE "-std=c\\+\\+[0-9]+" "" SDRPP_COMPILER_FLAGS "${SDRPP_COMPILER_FLAGS}")
+set(SDRPP_MODULE_COMPILER_FLAGS "${SDRPP_COMPILER_FLAGS}")
+
+# Include the SDR++ module file
 include(${SDRPP_MODULE_CMAKE})
 
+
 if(MSVC)
-  target_compile_options(tetra_demodulator PRIVATE /W4 /WX)
+  # target_compile_options(tetra_demodulator PRIVATE /W4 /WX)
 else()
-  target_compile_options(tetra_demodulator PRIVATE -Wall -Wextra)
+  # target_compile_options(tetra_demodulator PRIVATE -Wall -Wextra)
 endif()
 
 target_include_directories(tetra_demodulator PRIVATE BEFORE "src/" "src/decoder/src" "src/decoder/codec" )
