@@ -144,8 +144,9 @@ jobs:
           run: 'brew update && brew install talloc fftw glfw volk zstd'
 
         - name: Download ETSI code
-          run: 'cd ${{runner.workspace}}/decoder_modules/sdrpp-tetra-demodulator/src/decoder/etsi_codec-patches && ./download_and_patch.sh'
-          
+          working-directory: ${{runner.workspace}}
+          run: 'cd $GITHUB_WORKSPACE/decoder_modules/sdrpp-tetra-demodulator/src/decoder/etsi_codec-patches && ./download_and_patch.sh'
+
         - name: Build
           working-directory: ${{runner.workspace}}/build
           run: make VERBOSE=1 -j3
