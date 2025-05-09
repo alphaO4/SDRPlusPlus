@@ -48,7 +48,6 @@ else()
   # target_compile_options(tetra_demodulator PRIVATE -Wall -Wextra)
 endif()
 
-add_dependencies(tetra_demodulator run_script)
 
 target_include_directories(tetra_demodulator PRIVATE BEFORE 
     "src/" 
