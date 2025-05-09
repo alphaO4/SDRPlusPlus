@@ -140,6 +140,12 @@ jobs:
           working-directory: ${{runner.workspace}}/build
           run: cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15 $GITHUB_WORKSPACE -DOPT_BUILD_PLUTOSDR_SOURCE=ON -DOPT_BUILD_BLADERF_SOURCE=ON -DOPT_BUILD_SDRPLAY_SOURCE=ON -DOPT_BUILD_LIMESDR_SOURCE=ON -DOPT_BUILD_AUDIO_SINK=OFF -DOPT_BUILD_PORTAUDIO_SINK=ON -DOPT_BUILD_NEW_PORTAUDIO_SINK=ON -DOPT_BUILD_M17_DECODER=ON -DOPT_BUILD_PERSEUS_SOURCE=ON -DOPT_BUILD_AUDIO_SOURCE=OFF -DOPT_BUILD_RFNM_SOURCE=ON -DOPT_BUILD_FOBOSSDR_SOURCE=ON -DUSE_BUNDLE_DEFAULTS=ON -DCMAKE_BUILD_TYPE=Release
 
+        - name: Install Tetra Democ dependencies
+          run: 'brew update && brew install talloc fftw glfw volk zstd'
+
+        - name: Download ETSI code
+          run: 'cd ${{runner.workspace}}/decoder_modules/sdrpp-tetra-demodulator/src/decoder/etsi_codec-patches && ./download_and_patch.sh'
+          
         - name: Build
           working-directory: ${{runner.workspace}}/build
           run: make VERBOSE=1 -j3
@@ -202,7 +208,7 @@ jobs:
           run: cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.15 $GITHUB_WORKSPACE -DOPT_BUILD_PLUTOSDR_SOURCE=ON -DOPT_BUILD_BLADERF_SOURCE=ON -DOPT_BUILD_SDRPLAY_SOURCE=ON -DOPT_BUILD_LIMESDR_SOURCE=ON -DOPT_BUILD_AUDIO_SINK=OFF -DOPT_BUILD_PORTAUDIO_SINK=ON -DOPT_BUILD_NEW_PORTAUDIO_SINK=ON -DOPT_BUILD_M17_DECODER=OFF -DOPT_BUILD_PERSEUS_SOURCE=OFF -DOPT_BUILD_AUDIO_SOURCE=OFF -DOPT_BUILD_RFNM_SOURCE=ON -DOPT_BUILD_FOBOSSDR_SOURCE=ON -DUSE_BUNDLE_DEFAULTS=ON -DCMAKE_BUILD_TYPE=Release
 
         - name: Install Tetra Democ dependencies
-          run: 'brew install libtalloc-dev libfftw3-dev libglfw3-dev libvolk-dev libzstd-dev'
+          run: 'brew update && brew install talloc fftw glfw volk zstd'
 
         - name: Download ETSI code
           run: 'cd ${{runner.workspace}}/decoder_modules/sdrpp-tetra-demodulator/src/decoder/etsi_codec-patches && ./download_and_patch.sh'
