@@ -42,8 +42,8 @@
 #include <lower_mac/viterbi.h>
 #include <crypto/tetra_crypto.h>
 
-#include "c-code/channel.h"
-#include "c-code/source.h"
+#include "../../codec/c-code/channel.h"
+#include "../.../codec/c-code/source.h"
 
 struct tetra_blk_param {
 	const char *name;
