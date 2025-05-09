@@ -62,4 +62,11 @@ else()
   # target_compile_options(tetra_demodulator PRIVATE -Wall -Wextra)
 endif()
 
-target_include_directories(tetra_demodulator PRIVATE BEFORE "src/" "src/decoder/src" "src/decoder/codec" )
+add_dependencies(tetra_demodulator run_script)
+
+target_include_directories(tetra_demodulator PRIVATE BEFORE 
+    "src/" 
+    "src/decoder/src" 
+    "src/decoder/codec" 
+    "src/decoder/codec/c-code" # Add this line
+)
