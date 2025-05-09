@@ -31,7 +31,7 @@ file(GLOB SRC LIST_DIRECTORIES false
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
 
 if (NOT SDRPP_MODULE_CMAKE)
-    set(SDRPP_MODULE_CMAKE "/usr/share/cmake/Modules/sdrpp_module.cmake")
+    set(SDRPP_MODULE_CMAKE "/Users/runner/work/SDRPlusPlus/sdrpp_module.cmake")
 endif ()
 
 
