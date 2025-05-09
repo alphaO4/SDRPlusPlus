@@ -32,20 +32,6 @@ if (NOT SDRPP_MODULE_CMAKE)
 endif ()
 
 
-# Run patching:
-
-# Define the relative path to your script
-set(SCRIPT_PATH "${CMAKE_SOURCE_DIR}/src/decoder/etsi_codec-patches/download_and_patch.sh")
-
-add_custom_target(run_script
-    COMMAND ${CMAKE_COMMAND} -E echo "Running script from: ${SCRIPT_PATH}"
-    COMMAND ${CMAKE_COMMAND} -E chmod +x ${SCRIPT_PATH}
-    COMMAND /bin/sh ${SCRIPT_PATH}
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/src/decoder/etsi_codec-patches
-    COMMENT "Executing shell script from the correct path"
-)
-
-
 
 # Remove the -std=c++17 flag
 string(REPLACE "-std=c++17" "" SDRPP_COMPILER_FLAGS "${SDRPP_COMPILER_FLAGS}")
