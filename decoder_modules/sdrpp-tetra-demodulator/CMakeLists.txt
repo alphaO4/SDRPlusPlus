@@ -16,16 +16,8 @@ file(GLOB SRC LIST_DIRECTORIES false
     "src/decoder/src/lower_mac/*.c"
     "src/decoder/src/phy/*.cpp"
     "src/decoder/src/phy/*.c"
-    "src/decoder/codec/c-code/cdec_tet.c"
-    "src/decoder/codec/c-code/sub_cd.c"
-    "src/decoder/codec/c-code/tetra_op.c"
-    "src/decoder/codec/c-code/sdec_tet.c"
-    "src/decoder/codec/c-code/sub_sc_d.c"
-    "src/decoder/codec/c-code/sub_dsp.c"
-    "src/decoder/codec/c-code/fbas_tet.c"
-    "src/decoder/codec/c-code/fexp_tet.c"
-    "src/decoder/codec/c-code/fmat_tet.c"
-    "src/decoder/codec/c-code/tetra_op.c"
+    "src/decoder/codec/c-code/*.c"
+    "src/decoder/codec/c-code/*.h"
     )
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=native")
